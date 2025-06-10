@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--This is the index page which users will be greeted with when opening the page -->
+<html lang="en">
+  <link rel="stylesheet" href="/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Stumble</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0; /*the line below is calling the jpg for the background which is a stock image by mylo kaye*/
+      background: url('mylo-kaye-NXtGjC7osPs-unsplash.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 3rem;
+      border-radius: 21px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+      opacity: 0;
+      transform: translateY(-100px); /* Initially off-screen */
+    }
+
+ 
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2c2c2c;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    a.button {
+      background: #6C63FF;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover {
+      background: #574ee1;
+    }
+
+   
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+
+    .slide-out {
+      transform: translateY(-100px);
+      transition: transform 1s ease-out;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container" id="welcome-container">
+    <h1>Welcome to Stumble</h1>
+    <p>Stumble into the best of Manchester's hidden gems, from rock cafés and libraries to student-friendly pubs. Let the city unfold for you.</p>
+    <div class="button-group">
+      <!--Big clear blue button-->
+      <a class="button" href="#" id="get-started">Get Started</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('welcome-container');
+      // this start the animation when the page loads
+      container.style.animation = 'slideIn 1s ease-out forwards'; 
+
+      document.getElementById('get-started').addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        // This ads  a fade in and slide out animation
+        container.classList.add('fade-out');
+        container.classList.add('slide-out');
+
+        // after animation, redirect to the signup page
+        setTimeout(function() {
+          window.location.href = '/sign'; 
+        }, 1000); //this is the delay
+      });
+    });
+  </script>
+</body>
+</html>

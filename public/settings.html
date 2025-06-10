@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>Stumble  Settings</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/script.js"></script>
+    <style>
+   body {
+    margin: 0;
+    padding: 60px 0 20px 0; 
+    background: linear-gradient(135deg, #ff9a8b, #6C63FF);
+    color: #333;
+    min-height: 100vh; 
+    box-sizing: border-box; 
+}
+
+
+
+/*navigation bar styling*/
+nav {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    font-weight: bold;
+    gap: 1rem;
+}
+    .nav-left .brand {
+      font-size: 1.3rem;
+      color: #6C63FF;
+      text-decoration: none;
+    }
+    .nav-center a,
+    .nav-right a {
+      margin: 0 50px;
+      text-decoration: none;
+      color: #333;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .nav-right span {
+      color: #555;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: #6C63FF;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+
+
+
+
+/*settings containers and the style of the content*/
+    .settings-container {
+    background: white;
+    max-width: 800px;
+    margin: 20px auto 40px; 
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    overflow-y: auto; 
+}
+
+    .setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .setting label {
+      font-weight: 500;
+    }
+
+    .setting input[type="text"],
+    .setting select {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 200px;
+  
+    font-family: inherit; 
+    
+    }
+
+    .setting input[type="checkbox"] {
+      transform: scale(1.2);    
+    }
+
+    .button {
+      padding: 0.7rem 1.5rem;
+      background: #6C63FF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 20px;
+   
+    font-family: inherit; 
+    
+    }
+
+/*adding more css for mobile use */
+    @media (max-width: 400px) {
+  body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  html {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+
+    nav {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .nav-left .brand {
+    font-size: 0.9rem;
+  }
+  .nav-center a,
+  .nav-right a {
+    margin: 0 3px;
+  }
+  nav a {
+    margin: 0.1rem 0;
+  }
+  .nav-right span {
+    font-size: 0.75rem;
+  }
+
+  .settings-container {
+     background: white;
+     max-width: 800px;
+     margin: 150px auto 40px; 
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+
+}
+  </style> 
+</head>
+<body>
+
+  <!--navigation bar-->
+    <nav>
+        <div class="nav-left">
+          <a href="/userhome" class="brand">Stumble</a>
+        </div>
+        <div class="nav-center">
+          <a href="/userhome">Home</a>
+          <a href="/map.html">Map</a>
+          <a href="/help.html">Help</a>
+        </div>
+        <div class="nav-right">
+          <span>Hi, <span id="username-placeholder">Guest</span></span>
+          <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!--this is the settings UI-->
+    <div class="settings-container">
+      <h2>Settings</h2>
+    
+      <div class="setting">
+        <label for="notifications">Enable Notifications</label>
+        <input type="checkbox" id="notifications" />
+      </div>
+    
+      <div class="setting">
+        <label for="vibration">Enable Vibration</label>
+        <input type="checkbox" id="vibration" />
+      </div>
+    
+      <div class="setting">
+        <label for="darkMode">Dark Mode</label>
+        <input type="checkbox" id="darkMode" />
+      </div>
+    
+      <div class="setting">
+        <label for="textSize">Text Size</label>
+        <select id="textSize">
+          <option value="small">Small</option>
+          <option value="medium" selected>Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    
+      <div class="setting">
+        <label for="feedSort">Feed Sort</label>
+        <select id="feedSort">
+            <option value="recent">Most Recent</option>
+            <option value="oldest">Oldest</option>
+            <option value="liked">Most Liked</option>
+            <option value="disliked">Most Disliked</option>
+        </select>
+      </div>
+    
+      <div class="setting">
+        <label for="language">Language</label>
+        <select id="language">
+          <option value="en" selected>English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+        </select>
+      </div>
+    
+      <div class="setting">
+        <label for="username">Display Username</label>
+        <input type="text" id="username" placeholder="Enter your name" />
+      </div>
+    
+      <button class="button" onclick="saveSettings()">Save Settings</button>
+      <button class="button" onclick="clearData()" style="background-color: #e74c3c;">Clear Data</button>
+    </div>
+  <!--success messaage-->
+    <div id="save-message" style="display:none; color: green; margin-top: 10px;">Settings saved!</div>
+    
+<script>
+  //get username and displays it 
+  const username = localStorage.getItem('username') || 'Guest';
+  document.getElementById('username-placeholder').textContent = username;
+
+//saves current settings to the local storage 
+  function saveSettings() {
+    const settings = {
+      notifications: document.getElementById("notifications").checked,
+      vibration: document.getElementById("vibration").checked,
+      darkMode: document.getElementById("darkMode").checked,
+      textSize: document.getElementById("textSize").value,
+      feedSort: document.getElementById("feedSort").value,
+      language: document.getElementById("language").value,
+      username: document.getElementById("username").value
+    };
+
+    localStorage.setItem("userSettings", JSON.stringify(settings));
+    applySettings(settings); 
+    document.getElementById("username-placeholder").textContent = settings.username || "Guest";
+
+    //shows confirmation message 
+const message = document.getElementById("save-message");
+if (message) {
+  message.style.display = "block";
+  setTimeout(() => {
+    message.style.display = "none";
+  }, 2000);
+}
+
+  }
+//clear all saved settings and reload the page 
+  function clearData() {
+    localStorage.removeItem("userSettings");
+    alert("Settings cleared!");
+    location.reload();
+}
+window.onload = loadSettings;
+</script>
+
+    
+</body>
+</html>

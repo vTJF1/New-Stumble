@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login  Stumble</title>
+  <style>
+    body {
+
+      margin: 0;
+      padding: 0;/*the line below is calling the jpg for the background which is a stock image by mylo kaye*/
+      background: url('mylo-kaye-NXtGjC7osPs-unsplash.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+    }
+
+
+
+
+
+
+    nav {
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        font-weight: bold;
+        gap: 1rem; }
+    .nav-left .brand {
+        font-size: 1.3rem;
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .nav-center a,
+     .nav-right a {
+        margin: 0 50px;
+        text-decoration: none;
+        color: #333;
+    }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0; 
+    }
+    .nav-right span {
+        color: #555;
+        white-space: nowrap;
+    }
+    nav a {
+      color: #6C63FF;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+
+
+
+
+
+
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 21px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: 100px auto 0;
+      animation: slideIn 1s ease-out forwards;
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #2c2c2c;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #6C63FF;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #574ee1;
+    }
+
+    .alt {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .alt a {
+      color: #6C63FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!--naviagtion bar with links to home and sign up-->
+  <nav>
+    <div class="nav-left"><a href="/">Home</a></div>
+    <div class="nav-right"><a href="/sign">Sign Up</a></div>
+  </nav>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h1>Welcome Back</h1>
+    <form action="/users/login" method="POST">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <div class="alt">
+      <p>Don't have an account? <a href="/sign">Sign up</a></p>
+    </div>
+  </div>
+</body>
+</html>

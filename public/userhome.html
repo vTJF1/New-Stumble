@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stumble  Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/script.js"></script>
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a8b, #6C63FF);
+      background-size: cover;
+      height: 100vh;
+     color: #333;
+    }
+    html {
+      height: 100%;
+      overflow: hidden;
+      margin-bottom: 20px; 
+      font-family: inherit; 
+    }
+
+
+
+
+  /*navigation style*/
+
+    nav {
+      background-color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      font-weight: bold;
+      gap: 1rem;
+    }
+    .nav-left .brand {
+      font-size: 1.3rem;
+      color: #6C63FF;
+      text-decoration: none;
+    }
+    .nav-center a,
+    .nav-right a {
+      margin: 0 50px;
+      text-decoration: none;
+      color: #333;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .nav-right span {
+      color: #555;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: #6C63FF;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+
+
+
+
+  
+/*main container*/
+
+    .container {
+      display: flex;
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 2rem;
+      border-radius: 21px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 1300px;
+      width: 90%;
+      margin: 80px auto 10px;
+      height: calc(100vh - 160px); 
+      gap: 20px;
+      overflow: hidden;
+      margin-top: 85px; 
+    }
+
+
+    /*feed*/
+    .feed-container {
+      flex: 2; 
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      margin-bottom: 30px;
+    } 
+     .feed-controls {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    
+/*venue conatiner*/
+    .venue-container {
+      flex: 1; 
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      height: 700px;
+    }
+
+  
+
+    .sort-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-family: inherit;
+    }
+    .sort-box select {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 180px;
+      font-family: inherit;
+    }
+
+
+/*post css*/
+    .post-box textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      resize: none;
+      font-family: inherit;
+    }
+    .post-box button {
+      background: #6C63FF;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .post {
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .post strong {
+      color: #6C63FF;
+      font-size: 1.1rem;
+    }
+    .post p {
+      font-size: 1rem;
+      color: #555;
+    }
+    .post-footer {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+
+
+
+
+
+
+    .venue-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .venue-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+
+    .venue-item p {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .venue-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    button {
+    font-family: inherit; 
+    }
+
+
+/* mobile styling*/
+   @media (max-width: 400px) {
+  body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  html {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+  .container {
+    flex-direction: column;
+    min-height: auto; 
+    margin-top: 120px;
+    margin-bottom: 20px;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .feed-container {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .feed-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sort-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .sort-box label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.1rem;
+  }
+
+  .sort-box select {
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  nav {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .nav-left .brand {
+    font-size: 0.9rem;
+  }
+
+  .nav-center a,
+  .nav-right a {
+    margin: 0 3px;
+  }
+
+  nav a {
+    margin: 0.1rem 0;
+  }
+
+  .nav-right span {
+    font-size: 0.75rem;
+  }
+
+  .venue-container {
+    display: none !important;
+  }
+
+  .post-box textarea {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-box button {
+    width: 100%;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .post {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-radius: 8px;
+  }
+
+  .post strong {
+    font-size: 0.9rem;
+  }
+
+  .post p {
+    margin-bottom: 0.2rem;
+  }
+
+  .post-footer {
+    font-size: 0.7rem;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+  .post > div {
+    font-size: 0.8rem;
+    gap: 5px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <!--navigation bar-->
+  <nav>
+    <div class="nav-left">
+      <a href="/userhome" class="brand">Stumble</a>
+    </div>
+    <div class="nav-center">
+      <a href="/userhome">Home</a>
+      <a href="/map.html">Map</a>
+      <a href="/help.html">Help</a>
+    </div>
+    <div class="nav-right">
+      <span>Hi, <span id="username-placeholder">Guest</span></span>
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+
+
+<!--main container for feed and top rated venues-->
+  <div class="container">
+    <div class="feed-container">
+      <div class="feed-controls">
+        <div class="sort-box">
+          <label for="sortSelect"><strong>Sort by:</strong></label>
+          <select id="sortSelect" onchange="fetchFeed()">
+            <option value="recent">Most Recent</option>
+            <option value="oldest">Oldest</option>
+            <option value="liked">Most Liked</option>
+            <option value="disliked">Most Disliked</option>
+          </select>
+        </div>
+
+        <!--post input area-->
+        <div class="post-box">
+          <textarea id="postText" placeholder="Stumble's feed is a safe place for students to express opinions on Manchester venues" rows="3"></textarea>
+          <button onclick="postUpdate()">Post</button>
+        </div>
+      </div>
+
+      <div class="feed" id="feed">
+        
+      </div>
+    </div>
+
+    <div class="venue-container">
+      <h3>Top-Rated Venues</h3>
+      <div class="venue-list" id="venue-list">
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //getting username for it to be displayed
+    const username = localStorage.getItem('username') || 'Guest';
+    document.getElementById('username-placeholder').textContent = username;
+
+
+
+
+    //fetches the feed posts from the db 
+    async function fetchFeed() {
+      const sortBy = document.getElementById('sortSelect')?.value || 'recent';
+
+      try {
+        const response = await fetch(`/api/posts?sort=${sortBy}`);
+        const posts = await response.json();
+        displayFeed(posts);
+      } catch (error) {
+        console.error('Failed to load feed:', error);
+      }
+    }
+
+
+
+
+
+    //this function displays the fetched posts 
+    function displayFeed(posts) {
+  const feedContainer = document.getElementById('feed');
+  feedContainer.innerHTML = '';
+
+
+//each post is a different pastle colour
+  const paleColors = ['#fcefe3', '#e3f7fc', '#f3e3fc', '#e3fce9', '#fcfce3', '#fce3f0', '#e3ecfc'];
+
+  posts.forEach((post, index) => {
+
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post';
+    const bgColor = paleColors[index % paleColors.length];
+    postDiv.style.backgroundColor = bgColor;
+    const hasLiked = post.likedBy && post.likedBy.includes(username);
+    const hasDisliked = post.dislikedBy && post.dislikedBy.includes(username);
+    const postDate = new Date(post.createdAt).toLocaleString();
+
+
+    //this is to add the date and username to the posts 
+    postDiv.innerHTML = `
+      <strong>${post.username}</strong>
+      <p>${post.content}</p>
+      <p class="post-footer">Posted on: ${postDate}</p>
+      <div style="display: flex; align-items: center; gap: 10px;">
+
+        <img 
+          src="${hasLiked ? 'likedpressed.png' : 'likednotpressed.png'}" 
+          width="60" height="60" 
+          style="cursor: pointer;" 
+          onclick="react('${post._id}', 'like', this)"
+        />
+
+        <span>${post.likes || 0}</span>
+        <img 
+          src="${hasDisliked ? 'dislikepressed.png' : 'dislikenotpressed.png'}" 
+          width="60" height="60" 
+          style="cursor: pointer;" 
+          onclick="react('${post._id}', 'dislike', this)"
+        />
+
+        <span>${post.dislikes || 0}</span>
+
+      </div>
+    `;
+
+    feedContainer.appendChild(postDiv);
+  });
+}
+
+
+
+
+
+
+//this is to post a new update to the deed
+    async function postUpdate() {
+      const text = document.getElementById('postText').value.trim();
+
+      //if text is empty do nothing
+      if (!text) return;
+
+      try {
+        const response = await fetch('/api/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, content: text })
+        });
+
+        if (response.ok) {
+          document.getElementById('postText').value = '';
+          fetchFeed();
+        } else {
+          alert('Failed to post');
+        }
+      } catch (error) {
+        //fetchs any errors
+        console.error('Error posting:', error);
+      }
+    }
+
+    //function for users to react to a specific post e.i. like or dislike
+    async function react(postId, reaction, imgElement) {
+      try {
+        // send POST req to react to the post with the given postId
+        const res = await fetch(`/api/posts/${postId}/react`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reaction, username }) //sending which reaction and username
+        });
+
+        //if its okay then it will reload
+        if (res.ok) {
+          fetchFeed();
+        } else {
+          alert('Failed to react');
+        }
+      } catch (err) {
+        //fetchs any errors
+        console.error('Reaction error:', err);
+      }
+    }
+
+
+    //load and display venue list 
+    async function loadVenues() {
+  try {
+    const response = await fetch('/api/venues');
+    const venues = await response.json();
+
+    
+    venues.sort((a, b) => b.rating - a.rating);
+//similarly to the posts these follow the same pale format
+    const paleColors = ['#fcefe3', '#e3f7fc', '#f3e3fc', '#e3fce9', '#fcfce3', '#fce3f0', '#e3ecfc'];
+    const venueList = document.getElementById('venue-list');
+    venueList.innerHTML = '';
+
+    venues.forEach((venue, index) => {
+      const venueElement = document.createElement('div');
+      venueElement.classList.add('venue-item');
+
+      //set background for the venue item based on the index
+      const bgColor = paleColors[index % paleColors.length];
+      venueElement.style.backgroundColor = bgColor;
+
+      venueElement.innerHTML = `
+        <h3>${venue.name}</h3>
+        <p>Rating: ${venue.rating}</p>
+      `;
+      venueList.appendChild(venueElement);
+    });
+  } catch (error) {
+    //fetchs any errors
+    console.error('Error fetching venues:', error);
+  }
+}
+
+
+    loadVenues(); 
+    fetchFeed();   
+  </script>
+</body>
+</html>

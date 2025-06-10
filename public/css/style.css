@@ -1,0 +1,21 @@
+/*loading in a custom font I downloaded*/
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../fonts/KGPerfectPenmanship.otf') format('opentype'),
+         url('../fonts/KGPerfectPenmanship.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  /*This adds it into all pages*/
+  body {
+    font-family: 'MyCustomFont', sans-serif;
+  }
+  
+  /*this makes the navigation stack vertically for smaller screens and phones*/
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }

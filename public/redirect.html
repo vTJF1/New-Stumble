@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <script>
+
+    //this captures the name parameter from the url
+    const urlParams = new URLSearchParams(window.location.search);
+
+    //default to guest
+    const name = urlParams.get('name') || 'Guest';
+
+    //this stores the username in localstorage allowing it to be used later
+    localStorage.setItem('username', name); 
+
+    //redirects the users to the /userhomepage
+    window.location.href = '/userhome'; 
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/script.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stumble  Map</title>
+  <style>
+ body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a8b, #6C63FF);
+      color: #333;
+    }
+
+    nav {
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        font-weight: bold;
+        gap: 1rem; 
+    }
+    .nav-left .brand {
+        font-size: 1.3rem;
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .nav-center a,
+     .nav-right a {
+        margin: 0 50px;
+        text-decoration: none;
+        color: #333;
+    }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0; 
+    }
+    .nav-right span {
+        color: #555;
+        white-space: nowrap;
+    }
+
+
+
+    nav a {
+      color: #6C63FF;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    .main-content {
+      display: flex;
+      height: calc(100vh - 70px);
+      margin-top: 70px;
+    }
+
+    #map {
+        flex: 1;
+  margin: 20px;
+  border: 4px solid #6C63FF;
+  border-radius: 15px;
+  height: calc(100% - 40px);
+  box-sizing: border-box;
+    }
+
+    .info-section {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      background-color:linear-gradient(135deg, #ff9a8b, #6C63FF);
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    #venue-details {
+      display: none;
+    }
+
+    .search-bar input {
+      flex-grow: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: inherit; 
+    }
+
+    .search-bar button {
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      background-color: #6C63FF;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit; 
+
+    }
+
+    #searchResults {
+        margin-bottom: 30px; 
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffffcc;
+    }
+
+    #searchResults li {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .comment-bubble {
+      background-color: #ffffff;
+      border: 1px solid #FFA500;
+      border-radius: 15px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      max-width: 90%;
+      word-wrap: break-word;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    #comments-section {
+      margin-top: 20px;
+    }
+
+    #comments-section ul {
+        max-height: 200px;
+  overflow-y: auto;
+  padding-left: 0;
+    }
+
+    #comments-section li {
+      margin-bottom: 10px;
+    }
+
+    .comment-form {
+      margin-top: 20px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .comment-form button {
+      padding: 0.5rem 1rem;
+      background-color: #6C63FF;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: inherit; 
+     }
+
+
+
+     @media (max-width: 400px) {
+  body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  html {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+
+    nav {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .nav-left .brand {
+    font-size: 0.9rem;
+  }
+  .nav-center a,
+  .nav-right a {
+    margin: 0 3px;
+  }
+  nav a {
+    margin: 0.1rem 0;
+  }
+  .nav-right span {
+    font-size: 0.75rem;
+  }
+
+
+  .main-content {
+        display: flex;
+        flex-direction: column; 
+        margin-top: 100px; 
+        height: calc(100vh - 50px); 
+    }
+
+    #map {
+        flex: none; 
+        width: calc(100% - 40px); 
+        height: 50vh; 
+        margin: 20px; 
+        border: 4px solid #6C63FF;
+        border-radius: 15px;
+        box-sizing: border-box;
+    }
+
+    .info-section {
+        flex: 1; 
+        padding: 1rem; 
+        overflow-y: auto; 
+        width: calc(100% - 40px);
+        margin: 0 20px 20px 20px;
+        box-sizing: border-box;
+        background-color:linear-gradient(135deg, #ff9a8b, #6C63FF); 
+    }
+
+    .search-bar {
+        margin-bottom: 0.5rem;
+    }
+
+    .search-bar input {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .search-bar button {
+        padding: 0.4rem 0.8rem; 
+        font-size: 0.9rem; 
+    }
+    #searchResults {
+        margin-bottom: 15px;
+        padding: 15px; 
+    }
+
+    #searchResults li {
+        margin-bottom: 10px;                
+        padding-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    .comment-form textarea {
+        height: 80px; 
+    }
+}
+
+
+  </style>
+</head>
+<body>
+    <nav> <!--navigation bar at the top  -->
+        <div class="nav-left">
+          <a href="/userhome" class="brand">Stumble</a>
+        </div>
+        <div class="nav-center">
+          <a href="/userhome">Home</a>
+          <a href="/map.html">Map</a>
+          <a href="/help.html">Help</a>
+        </div>
+        <div class="nav-right">
+          <span>Hi, <span id="username-placeholder">Guest</span></span>
+          <a href="/logout">Logout</a>
+        </div>
+      </nav>
+<!--main content container and the map will be rendered within the div-->
+  <div class="main-content">
+    <div id="map"></div>
+    <div class="info-section">
+      <h2>Nearby Student Spots</h2>
+      <p>Find cool places to study, eat, and chill around Manchester.</p>
+<!-- venue search bar -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for venues..." />
+        <button onclick="searchVenues()">Search</button>
+      </div>
+<!--results-->
+      <ul id="searchResults"></ul>
+    </div>
+  </div>
+
+  <script>
+    let map;
+    let markers = [];
+    let currentVenueId = null;
+
+    //gets username and displays in top right corner 
+    const username = localStorage.getItem('username') || 'Guest';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('username-placeholder').textContent = username;
+    });
+
+
+//google map centered on Manchester
+    function initMap() {
+      const manchester = { lat: 53.4808, lng: -2.2426 };
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: manchester,
+        styles: [
+          { featureType: "poi.business", stylers: [{ visibility: "off" }] },
+          { featureType: "transit", elementType: "labels.icon", stylers: [{ visibility: "off" }] }
+        ]
+      });
+    }
+
+
+//searches the backened for venues matching the query
+    function searchVenues() {
+      const query = document.getElementById('searchInput').value;
+      if (!query) return;
+
+      fetch(`/api/venues/search?q=${encodeURIComponent(query)}`)
+        .then(res => res.json())
+        .then(venues => {
+          const resultsList = document.getElementById('searchResults');
+          resultsList.innerHTML = '';
+          markers.forEach(marker => marker.setMap(null));
+          markers = [];
+
+          //loops venues and adds  to the ui and map
+          venues.forEach(v => {
+            const li = document.createElement('li');
+            
+            //beer mugs for student ratings 
+            let beerMugs = '';
+            const rating = v.rating || 0;  // defaults to 0 if it is not included
+            for (let i = 0; i < rating; i++) {
+              beerMugs += `<img src="beermugrating.png" alt="beer mug rating" style="width: 20px; height: auto; vertical-align: middle;">`;
+            }
+
+            
+            li.innerHTML = `<strong>${v.name}</strong>  ${v.description} <br> Student Rating: ${beerMugs}`;
+
+            // Displays comments in info sectiom
+            const comments = v.comments || [];
+            li.innerHTML += `<div id="comments-section">
+                                <h4>Comments:</h4>
+                               <ul id="comments-list-${v._id}">
+                                  ${comments.map(comment => `<li class="comment-bubble"><strong>${comment.username}</strong>: ${comment.content}</li>`).join('')}
+                               </ul>
+                                <div class="comment-form">
+                                  <h4>Add a Comment:</h4>
+                                  <textarea id="comment-content-${v._id}" placeholder="Write your comment here..."></textarea>
+                                  <button onclick="postComment('${v._id}')">Post Comment</button>
+                                </div>
+                              </div>`;
+
+            resultsList.appendChild(li);
+
+            const marker = new google.maps.Marker({
+              position: v.location,
+              map,
+              title: v.name
+            });
+
+            markers.push(marker);
+          });
+        });
+    }
+
+
+    //this function allows users to post comments on venues which are saved to the db 
+    function postComment(venueId) {
+      const content = document.getElementById(`comment-content-${venueId}`).value;
+      if (!content.trim()) return;
+
+      fetch(`/api/venues/${venueId}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, content })
+      })
+        .then(res => res.json())
+        .then(updatedVenue => {
+          document.getElementById(`comment-content-${venueId}`).value = '';
+          const commentsList = document.getElementById(`comments-list-${venueId}`);
+          commentsList.innerHTML = updatedVenue.comments.map(comment => 
+          `<li class="comment-bubble"><strong>${comment.username}</strong>: ${comment.content}</li>`
+          
+        ).join('');
+        });
+    }
+  </script>
+
+
+<!--this is the src and my google map api key-->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhZ8RORsi4hr3d_YcGS4k-n2VKTNGIXK0&callback=initMap">
+  </script>
+
+
+</body>
+</html>

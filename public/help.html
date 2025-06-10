@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+      <link rel="stylesheet" href="/css/style.css" />
+      <script src="/js/script.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stumble  Help</title>
+
+
+  <style>
+    
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a8b, #6C63FF);
+      color: #333;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+
+    /*nav section */
+    nav {
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        font-weight: bold;
+        gap: 1rem;
+    }
+    .nav-left .brand {
+        font-size: 1.3rem;
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .nav-center a,
+     .nav-right a {
+        margin: 0 50px;
+        text-decoration: none;
+        color: #333;
+    }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0; 
+    }
+    .nav-right span {
+        color: #555;
+        white-space: nowrap;
+    }
+    nav a {
+      color: #6C63FF;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+
+
+
+    .container {
+      flex: 1;
+      margin-top: 100px;
+      padding: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(255,255,255,0.9); 
+      border-radius: 15px;
+      box-sizing: border-box;
+      margin-bottom: 30px; 
+    }
+
+    h1 {
+      color: #6C63FF;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #6C63FF;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    a.helpline {
+      color: #333;
+      text-decoration: none;
+    }
+
+    a.helpline:hover {
+      text-decoration: underline;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #6C63FF;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+     
+    font-family: inherit;
+    }
+
+
+
+
+    @media (max-width: 400px) {
+  body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  html {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+
+  nav {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .nav-left .brand {
+    font-size: 0.9rem;
+  }
+  .nav-center a,
+  .nav-right a {
+    margin: 0 3px;
+  }
+  nav a {
+    margin: 0.1rem 0;
+  }
+  .nav-right span {
+    font-size: 0.75rem;
+  }
+
+
+  .container {
+    margin-top: 150px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <a href="/userhome" class="brand">Stumble</a>
+    </div>
+    <div class="nav-center">
+      <a href="/userhome">Home</a>
+      <a href="/map.html">Map</a>
+      <a href="/help.html">Help</a>
+    </div>
+    <div class="nav-right">
+      <span>Hi, <span id="username-placeholder">Guest</span></span>
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+<!-- this contains all helplines an info on the page  -->
+  <div class="container">
+    <h1>Need Help?</h1>
+    <p>If you're feeling anxious, overwhelmed or lonely, you're not alone. These services are here for you:</p>
+<!--helpline links or numbers -->
+    <h2>Helplines</h2>
+    <ul>
+      <li><strong>Samaritans</strong>: <a class="helpline" href="tel:116123">116 123</a> (24/7, free)</li>
+      <li><strong>NHS Mental Health Helpline</strong>: <a class="helpline" href="tel:111">111</a></li>
+      <li><strong>Manchester Nightline</strong>: <a class="helpline" href="tel:01612753983">0161 275 3983</a></li>
+      <li><strong>University Counselling</strong>: <a class="helpline" href="https://www.mmu.ac.uk/student-life/wellbeing/counselling-and-mental-health" target="_blank">Visit website</a></li>
+      <li><strong>Manchester Mind</strong>: <a class="helpline" href="tel:01617695732">0161 769 5732</a></li>
+    </ul>
+
+
+<!--this is a big blue button for user to change some settings-->
+    <a href="/settings.html" class="button">Go to Settings</a>
+  </div>
+<!--This allows for users name to be displayed in the top right on nav bar-->
+  <script>
+    const username = localStorage.getItem('username') || 'Guest';
+    document.getElementById('username-placeholder').textContent = username;
+  </script>
+</body>
+</html>
