@@ -1,5 +1,10 @@
 # Manchester Student Venue Review Web Application - Stumble.
 
+## Project Overview
+
+This is a full-stack web application developed as my dissertation for Manchester Metropolitan University. "Stumble" provides a platform for students in Manchester to discover, review, and connect over local venues. It showcases my skills in web development, database management, and API integration.
+
+
 ## Features
 
 * **Venue Management:** Browse, view details, and review venues.
