@@ -29,11 +29,6 @@ before begining, ensure you have the following installed
 
 --------------------
 
-## Extract the zip file 
-
-unzip CreativePeice_Code_ThomasFlanagan_22517585.zip
-cd  CreativePeice_Code_ThomasFlanagan_22517585
-npm install
 
 ## Create a .env file within the project folder 
 
@@ -49,15 +44,11 @@ use env.example as a reference
     npm install
     ```
 3.  **Configure environment variables:**
-    Create a `.env` file with `MONGODB_URI=[Your MongoDB Connection String]` and `Maps_API_KEY=[Your Google Maps API Key]`.
+    Create a `.env` file with `MONGODB_URI=mongodb+srv://examiner:exam1234@cluster0.dsoeqw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0` and `Maps_API_KEY= AIzaSyAhZ8RORsi4hr3d_YcGS4k-n2VKTNGIXK0`.
 4.  **Start the application:**
     ```bash
     npm start
     ```
     Access at `http://localhost:3000`.
 
-## Starting program 
-cd  CreativePeice_Code_ThomasFlanagan_22517585
-npm start 
 
-http://localhost:3000
