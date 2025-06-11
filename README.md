@@ -49,7 +49,7 @@ use env.example as a reference
     npm install
     ```
 3.  **Configure environment variables:**
-    Create a `.env` file with `MONGODB_URI=mongodb+srv://examiner:exam1234@cluster0.dsoeqw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0` and `Maps_API_KEY= AIzaSyAhZ8RORsi4hr3d_YcGS4k-n2VKTNGIXK0`.
+    Create a `.env` file with `MONGODB_URI=mongodb+srv://examiner:exam1234@cluster0.dsoeqw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0` and `Maps_API_KEY= [YOUR_Maps_API_KEY]`.
 4.  **Start the application:**
     ```bash
     npm start
